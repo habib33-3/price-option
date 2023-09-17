@@ -3,7 +3,7 @@ import Link from "./../Link/Link";
 import { AiOutlineMenu, AiOutlineCloseCircle } from "react-icons/ai";
 
 const NavBar = () => {
-  const [open, setOpen] = useState([]);
+  const [open, setOpen] = useState(false);
 
   const routes = [
     { id: 1, path: "/", name: "Home" },
@@ -14,7 +14,7 @@ const NavBar = () => {
   ];
 
   return (
-    <nav>
+    <nav className="p-6">
       <div
         onClick={() => setOpen(!open)}
         className="md:hidden"
@@ -25,7 +25,11 @@ const NavBar = () => {
           <AiOutlineMenu className="text-2xl"></AiOutlineMenu>
         )}
       </div>
-      <ul className="md:flex gap-4">
+      <ul
+        className={`md:flex absolute md:static duration-1000  ${
+          open ? "top-17" : "-top-60"
+        } px-6 shadow-lg`}
+      >
         {routes.map((route) => {
           return (
             <Link
